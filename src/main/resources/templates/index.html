@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html html lang="en">
+<html html lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
 <head>
-<title>Page Title</title>
+    <title th:text="${titulo}"></title>
 </head>
+
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <h1 th:text="${titulo}"></h1>
+    <p>Desde spring</p>
 
 </body>
+
 </html>

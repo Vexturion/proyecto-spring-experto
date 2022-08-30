@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<script type="text/javascript"></script>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+<div th:if="${usuarios.size()==0}">No hay elementos registrados</div>
+
+</body>
+</html>

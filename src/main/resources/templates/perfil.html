@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<script type="text/javascript"></script>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+<span th:text="${usuario.nombre}"></span>
+<span th:text="${usuario.apellido}"></span><br>
+<span th:if="${usuario.email}" th:text="${usuario.email}"></span><br>
+<span th:if="${usuario.email==null}" th:text="'El usuario no ha ingresado un correo valido'"></span>
+</body>
+</html>
