@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html html lang="en" xmlns:th="http://thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title th:text="${titulo}"></title>
-<script type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+    <script type="text/javascript"></script>
 </head>
+
 <body>
-<h1 th:text="${titulo}"></h1>
-<div th:if="${usuarios.size()==0}">No hay elementos registrados</div>
+    <h1 th:text="${titulo}"></h1>
+    <div th:if="${usuarios.isEmpty()}">No hay elementos registrados</div>
+    <table th:if="${!usuarios.isEmpty()}">
+        <caption>Tabla de usuarios</caption>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>eMail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario: ${usuarios}">
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.apellido}"></td>
+                <td th:text="${usuario.email}"></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
+
 </html>
