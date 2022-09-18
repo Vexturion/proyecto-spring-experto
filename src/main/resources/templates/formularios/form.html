@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- en thymeleaf usamos @{para rutas} ${para expresiones con codigo java o extrapolacion de Spring } *{para mapear atributos al formulario}-->>
 
 <head>
     <meta charset="UTF-8">
@@ -8,23 +9,29 @@
 </head>
 
 <body>
-    <form th:action="@{/formularios/form}" method="post">
+    <form th:action="@{/formularios/form}" th:object="${usuario}" method="post">
         <div>
             <label for="username"> Username </label>
-            <div><input type="text" name="username" id="username"></div>
+            <div><input type="text" id="username" th:field="*{username}"></div>
         </div>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        <!-- Tambien podemos manejar los errores de esta forma con Thymeleaf, lo que nos ahorra codigo-->
         <div>
             <label for="password"> Password </label>
-            <div><input type="password" name="password" id="password">
+            <div><input type="password" id="password" th:field="*{password}">
             </div>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            <!-- forma anterior de manejar los errores <div th:if="${error != null && error.containsKey('password')}" th:text="${error.password}"></div> -->
             <div>
                 <label for="email"> Correo </label>
-                <div><input type="email" name="email" id="email">
+                <div><input type="text" id="email" th:field="*{email}">
+                    <!-- el campo th:field automaticamente implementa el atributo th:name y th:value-->
                 </div>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                 <div>
                     <div><input type="submit" value="Enviar">
                     </div>
-            </div>
+                </div>
     </form>
 </body>
 
