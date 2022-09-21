@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- en thymeleaf usamos @{para rutas} ${para expresiones con codigo java o extrapolacion de Spring } *{para mapear atributos al formulario}-->>
+<!-- en thymeleaf usamos @{para rutas} ${para expresiones con codigo java o extrapolacion de Spring } *{para mapear atributos al formulario}-->
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,16 @@
 
 <body>
     <form th:action="@{/formularios/form}" th:object="${usuario}" method="post">
+        <div>
+            <label for="nombre"> Nombre </label>
+            <div><input type="text" id="nombre" th:field="*{nombre}"></div>
+        </div>
+        <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        <div>
+            <label for="apellido"> Apellido </label>
+            <div><input type="text" id="apellido" th:field="*{apellido}"></div>
+        </div>
+        <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
         <div>
             <label for="username"> Username </label>
             <div><input type="text" id="username" th:field="*{username}"></div>
